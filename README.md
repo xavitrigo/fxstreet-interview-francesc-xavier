@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This page was created to give general instructions to complete the Interview Test. As a Development Team we believe that following SOLID principles is the way to build the best software that is easily maintanible, so keep in mind to develope the solution with this principles. 
+This page was created to give general instructions to complete the Interview Test for FXStreet. 
 
 ## Football API
 
