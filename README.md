@@ -17,8 +17,8 @@ GOALS:
 
 1. Persist some examples of each resource. The technology chosen for persisting is up to you.
 2. You have to create a job that consume this endpoint (http://interview-api.azurewebsites.net/api/IncorrectAlignment) when.
-  - The Match is starting in 5 minutes
-  - Send the List of Players or Managers that have 5 yellow cards or 1 red car
+  - A match is about to start (5 minutes before).
+  - Send the List of Players or Managers that have 5 yellow cards or 1 red card.
 
 ## Instructions
 
