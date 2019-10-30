@@ -16,7 +16,7 @@ The aim of this API is to store information about players, managers, referees, m
 GOALS:
 
 1. Persist some examples of each resource. The technology chosen for persisting is up to you.
-2. You have to create a job that consume this endpoint () when:
+2. You have to create a job that consume this endpoint () when.
   2.1. The Match is starting in 5 minutes
   2.2. Send the List of Players or Managers that have 5 yellow cards or 1 red car
 
