@@ -37,10 +37,10 @@ GOALS:
 
 ## Coding Tips
 
-1. As department we strongly believe in Clean Code and SOLID Principles, show us that you too.
+1. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
 2. We want to see your testing capabilities, despite is a CRUD web app, the second goal gives some room for it.
 3. If you feel confortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
-4. IMPORTANT In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
+4. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
 
 
 
