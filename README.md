@@ -42,6 +42,9 @@ GOALS:
 3. If you feel confortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
 4. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
 
+## Email Template
+
+Subject: FXStreet Interview - [Your full name]
 
 
 
