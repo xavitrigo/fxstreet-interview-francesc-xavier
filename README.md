@@ -32,6 +32,8 @@ GOALS:
 1. The code must be in .net Core
 2. The code must be available in GitHub
 3. The API must be public
+4. The final result must be available in less than 5 days since the first interview.
+
 
 
 
