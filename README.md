@@ -46,6 +46,14 @@ GOALS:
 
 Subject: FXStreet Interview - [Your full name]
 
+Body: 
+
+Github Url
+
+API Url
+
+Persistance Technollogy
+
 
 
 
