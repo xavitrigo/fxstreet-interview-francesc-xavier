@@ -26,6 +26,7 @@ GOALS:
 3. The Web API must persist the data in whatever database you feel confortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 4. The service should be available via a public URL. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 5. The code must be available in Github.
+6. Once you have finished the exercise send an Email (developer@fxstreet.com) with the public URL + GitHub repository + notes with improvements you would do with more time.
 
 ## Rules
 
