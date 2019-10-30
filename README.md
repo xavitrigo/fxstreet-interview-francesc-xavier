@@ -15,8 +15,8 @@ The candidate should develop a solution that follows the Swagger Documentation p
 1. Go to this LINK where we have placed the basic interface for the service.
 2. The aim of the test is to replicate the interface with a full functional Web API.
 3. The API must persist the data in whatever database you feel confortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
-4.- The service should be available via a public URL. In case you want to use Azure contact developer@fxstreet.com to get the credentials).
-5.- The code must be available in Github.
+4. The service should be available via a public URL. In case you want to use Azure contact developer@fxstreet.com to get the credentials).
+5. The code must be available in Github.
 
 
 
