@@ -27,6 +27,13 @@ GOALS:
 4. The service should be available via a public URL. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 5. The code must be available in Github.
 
+## Rules
+
+1. The code must be in .net Core
+2. The code must be available in GitHub
+3. The API must be public
+
+
 
 
 
