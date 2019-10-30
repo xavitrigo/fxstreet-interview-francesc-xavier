@@ -23,7 +23,7 @@ GOALS:
 
 1. Go to this LINK where we have placed the basic interface for the service.
 2. The aim of the test is to replicate the interface with a full functional Web API.
-3. The API must persist the data in whatever database you feel confortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
+3. The Web API must persist the data in whatever database you feel confortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 4. The service should be available via a public URL. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 5. The code must be available in Github.
 
@@ -31,7 +31,7 @@ GOALS:
 
 1. The code must be in .net Core.
 2. The code must be available in GitHub.
-3. The API must be public.
+3. The Web API must be public.
 4. The final result must be available in less than 5 days since the first interview.
 
 ## Coding Tips
