@@ -48,6 +48,7 @@ Subject: FXStreet Interview - [Your full name]
 
 Body: 
 
-Github Url
-API Url
-Persistence Technology + Screenshot of the model
+* Github Url
+* API Url
+* Persistence 
+* Technology + Screenshot of the model
