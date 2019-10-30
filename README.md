@@ -17,8 +17,8 @@ GOALS:
 
 1. Persist some examples of each resource. The technology chosen for persisting is up to you.
 2. You have to create a job that consume this endpoint (http://interview-api.azurewebsites.net/api/IncorrectAlignment) when.
-  - A match is about to start (5 minutes before).
-  - Send the List of Players or Managers that have 5 yellow cards or 1 red card.
+  - A match is about to start (5 minutes before).
+  - Send the List of Players or Managers that have 5 yellow cards or 1 red card.
 
 ## Instructions
 
@@ -39,11 +39,11 @@ GOALS:
 
 ## Coding Tips
 
-1. The controller IncorrectAlignment is the enpoint that you need to consume for the GOAL 2 of the exercise.
+1. The controller IncorrectAlignment is the endpoint that you need to consume for the GOAL 2 of the exercise.
 2. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
 3. We want to see your testing capabilities, despite is a CRUD web app, the second goal gives some room for it.
 4. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
-5. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
+5. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology comment them on the email and we will discuss it later on the interview.
 
 ## Email Template
 
@@ -52,6 +52,6 @@ Subject: FXStreet Interview - [Your full name]
 Body: 
 
 * Github Url
-* API Url
-* Persistence 
-* Technology + Screenshot of the model
+* API Url 
+* Persistence Technology + Screenshot of the model
+* Comments
