@@ -2,15 +2,22 @@
 
 ## Introduction
 
-This page was created to give general instructions to complete the Interview Test. 
+This page was created to give general instructions to complete the Interview Test. As a Development Team we believe that following SOLID principles is the way to build the best software that is easily maintanible, so keep in mind to develope the solution with this principles. 
 
 ## Football API
 
-The aim of this API is to store information about players, managers, referees, matches and league information. The second part of the exercise is to consume an API endpoint (POST) 5 minutes before a match starts.
+The aim of this API is to store information about players, managers, referees, matches and league information. Each controller has 4 actions:
 
-The candidate should develop a solution that follows the Swagger Documentation provided on this link.
+* GET
+* POST
+* PUT
+* DELETE
+
+Your first goal is to persist a bunch of each resources. The technolly chosen is up to you.
+Your second goal is to send those players/managers which have 5 yellow cards or 1 Red Card 5 minutes before a match starts. This must be send to an API posted here.
 
 ## Instructions
+
 
 1. Go to this LINK where we have placed the basic interface for the service.
 2. The aim of the test is to replicate the interface with a full functional Web API.
