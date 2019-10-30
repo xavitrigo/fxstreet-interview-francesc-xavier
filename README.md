@@ -16,14 +16,14 @@ The aim of this API is to store information about players, managers, referees, m
 GOALS:
 
 1. Persist some examples of each resource. The technology chosen for persisting is up to you.
-2. You have to create a job that consume this endpoint () when.
+2. You have to create a job that consume this endpoint (http://interview-api.azurewebsites.net/api/IncorrectAlignment) when.
   - The Match is starting in 5 minutes
   - Send the List of Players or Managers that have 5 yellow cards or 1 red car
 
 ## Instructions
 
 
-1. Go to this LINK where we have placed the basic interface for the service.
+1. Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) where we have placed the basic interface for the service.
 2. The aim of the test is to replicate the interface with a full functional Web API.
 3. The Web API must persist the data in whatever database you feel comfortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
 4. The service should be available via a public URL. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
@@ -39,10 +39,11 @@ GOALS:
 
 ## Coding Tips
 
-1. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
-2. We want to see your testing capabilities, despite is a CRUD web app, the second goal gives some room for it.
-3. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
-4. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
+1. The controller IncorrectAlignment is the enpoint that you need to consume for the GOAL 2 of the exercise.
+2. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
+3. We want to see your testing capabilities, despite is a CRUD web app, the second goal gives some room for it.
+4. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
+5. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology write them down and we will discuss it later on the interview.
 
 ## Email Template
 
