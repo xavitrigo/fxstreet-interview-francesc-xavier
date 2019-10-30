@@ -13,8 +13,10 @@ The aim of this API is to store information about players, managers, referees, m
 * PUT
 * DELETE
 
-Your first goal is to persist a bunch of each resources. The technolly chosen is up to you.
-Your second goal is to send those players/managers which have 5 yellow cards or 1 Red Card 5 minutes before a match starts. This must be send to an API posted here.
+GOALS:
+
+* Your first goal is to persist a bunch of each resources. The technolly chosen is up to you.
+* Your second goal is to send those players/managers which have 5 yellow cards or 1 Red Card 5 minutes before a match starts. This must be send to an API posted here.
 
 ## Instructions
 
