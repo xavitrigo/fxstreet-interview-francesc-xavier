@@ -34,6 +34,11 @@ GOALS:
 3. The API must be public
 4. The final result must be available in less than 5 days since the first interview.
 
+## Coding Tips
+
+1. As department we strongly believe in following Clean Code and SOLID Principles, show us that you too.
+2. We want to see your testing capabilities, despite is a CRUD web app, the second goal gives some room for it.
+3. If you feel confortable you can use some DevOps tool (Azure Devops, jenkins, etc..) but is not compulsive.
 
 
 
