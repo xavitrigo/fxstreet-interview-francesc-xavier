@@ -15,7 +15,7 @@ The aim of this API is to store information about players, managers, referees, m
 
 GOALS:
 
-1. Persist a bunch of each resources. The technology chosen is up to you.
+1. Persist a bunch of each resources. The technology chosen for persisting is up to you.
 2. Send those players/managers which have 5 yellow cards or 1 Red Card 5 minutes before a match starts. This must be send to an API posted here.
 
 ## Instructions
@@ -29,9 +29,9 @@ GOALS:
 
 ## Rules
 
-1. The code must be in .net Core
-2. The code must be available in GitHub
-3. The API must be public
+1. The code must be in .net Core.
+2. The code must be available in GitHub.
+3. The API must be public.
 4. The final result must be available in less than 5 days since the first interview.
 
 ## Coding Tips
