@@ -23,12 +23,12 @@ GOALS:
 ## Instructions
 
 
-1. Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) where we have placed the basic interface for the service.
+1. Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) where we have placed the basic interface for the service. IMPORTANT! These are just the contracts, the API provided does not work.
 2. The aim of the test is to replicate the interface with a full functional Web API.
-3. The Web API must persist the data in whatever database you feel comfortable. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
-4. The service should be available via a public URL. (In case you want to use Azure contact developer@fxstreet.com to get the credentials).
+3. The Web API must persist the data in whatever database you feel comfortable. (In case you want to use Azure contact javier@fxstreet.com to get the credentials).
+4. The service should be available via a public URL. (In case you want to use Azure contact javier@fxstreet.com to get the credentials).
 5. The code must be available in Github.
-6. Once you have finished the exercise send an Email (developer@fxstreet.com) following the Email Template described bellow.
+6. Once you have finished the exercise send an Email (javier@fxstreet.com) following the Email Template described bellow.
 
 ## Rules
 
