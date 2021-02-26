@@ -17,7 +17,6 @@ The aim of this API is to store information about players, managers, referees, m
 
 1. Fix current errors in the API
 2. Apply good practices in the project following clean code and DDD practices
-3. Take into account that we will probably switch repository type to other technology like MongoDB
 4. Implement Statistics controller following Clean Clode practices
 5. Create a Job that notifies 5 minutes before that a game is about to start
 6. Create a Job that notifies incorrect alignments sending a list of ids
@@ -41,10 +40,11 @@ The aim of this API is to store information about players, managers, referees, m
 ## Coding Tips
 
 1. The controller IncorrectAlignment is the endpoint that you need to consume for the GOAL 6 of the exercise.
-2. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
-3. We want to see your testing capabilities, despite is a CRUD web app, the 5,6 GOAL gives some room for it.
-4. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
-5. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology comment them on the email and we will discuss it later on the interview.
+2. Take into account that we will probably switch repository type to other technology like MongoDB
+3. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
+4. We want to see your testing capabilities, despite is a CRUD web app, the 5,6 GOAL gives some room for it.
+5. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
+6. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology comment them on the email and we will discuss it later on the interview.
 
 ## Email Template
 
