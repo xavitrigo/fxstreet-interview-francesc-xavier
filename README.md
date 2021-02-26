@@ -15,10 +15,13 @@ The aim of this API is to store information about players, managers, referees, m
 
 GOALS:
 
-1. Persist some examples of each resource. The technology chosen for persisting is up to you.
-2. You have to create a job that consume this endpoint (http://interview-api.azurewebsites.net/api/IncorrectAlignment) when.
-  - A match is about to start (5 minutes before).
-  - Send the List of Players or Managers that have 5 yellow cards or 1 red card.
+# Fix current errors in the API
+# Apply good practices in the project following clean code and DDD practices
+# Take into account that we will probably switch repository type to other technology like MongoDB
+# Implement Statistics controller following Clean Clode practices
+# Create a Job that notifies 5 minutes before that a game is about to start
+# Create a Job that notifies incorrect alignments sending a list of ids
+# Create the frontend with a List of statistics (no Razor allowed, no new endpoints
 
 ## Instructions
 
