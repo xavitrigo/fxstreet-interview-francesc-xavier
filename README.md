@@ -15,13 +15,13 @@ The aim of this API is to store information about players, managers, referees, m
 
 GOALS:
 
-# Fix current errors in the API
-# Apply good practices in the project following clean code and DDD practices
-# Take into account that we will probably switch repository type to other technology like MongoDB
-# Implement Statistics controller following Clean Clode practices
-# Create a Job that notifies 5 minutes before that a game is about to start
-# Create a Job that notifies incorrect alignments sending a list of ids
-# Create the frontend with a List of statistics (no Razor allowed, no new endpoints
+1. Fix current errors in the API
+2. Apply good practices in the project following clean code and DDD practices
+3. Take into account that we will probably switch repository type to other technology like MongoDB
+4. Implement Statistics controller following Clean Clode practices
+5. Create a Job that notifies 5 minutes before that a game is about to start
+6. Create a Job that notifies incorrect alignments sending a list of ids
+7. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
 ## Instructions
 
