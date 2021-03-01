@@ -18,8 +18,7 @@ The aim of this API is to store information about players, managers, referees, m
 1. Fix current errors in the API
 2. Apply good practices in the project following clean code and DDD practices
 4. Implement Statistics controller following Clean Clode practices
-5. Create a Job that notifies 5 minutes before that a game is about to start
-6. Create a Job that notifies incorrect alignments sending a list of ids
+5. Create a Job that notifies 5 minutes before a game starts incorrect alignments
 7. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
 ## Instructions
