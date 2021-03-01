@@ -23,7 +23,7 @@ The aim of this API is to store information about players, managers, referees, m
 
 ## Instructions
 
-1. Clone the repository and execute it, it should compile but once runned some errors might appear
+1. Clone the repository and execute it, it should compile but once run some errors might appear
 2. Resolve every Goal 
 3. The Web API must persist the data in whatever database you feel comfortable.
 4. The code must be available in a Github repository.
