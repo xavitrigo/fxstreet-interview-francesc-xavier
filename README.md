@@ -17,17 +17,17 @@ The aim of this API is to store information about players, managers, referees, m
 
 1. Fix current errors in the API
 2. Apply good practices in the project following clean code, DDD practices and Restful best practices
-4. Implement Statistics controller following Clean Clode practices
-5. Create a Job that notifies 5 minutes before a game starts incorrect alignments
-7. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
+3. Implement Statistics controller following Clean Clode practices
+4. Create a Job that notifies 5 minutes before a game starts incorrect alignments
+5. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
 ## Instructions
 
 1. Clone the repository and execute it, it should compile but once runned some errors might appear
-2. Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) where we have placed the basic interface for the service. IMPORTANT! These are just the contracts, the API provided does not work.
-3. Resolve every Goal 
-4. The Web API must persist the data in whatever database you feel comfortable.
-5. The code must be available in a Github repository.
+2. Resolve every Goal 
+3. The Web API must persist the data in whatever database you feel comfortable.
+4. The code must be available in a Github repository.
+5. In order to complete Goal 4 Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) and consume /api/IncorrectAlignment
 6. Once you have finished the exercise send an Email (javier@fxstreet.com and alain@fxstreet.com) following the Email Template described bellow.
 
 ## Rules
@@ -38,10 +38,10 @@ The aim of this API is to store information about players, managers, referees, m
 
 ## Coding Tips
 
-1. The controller IncorrectAlignment is the endpoint that you need to consume for the GOAL 6 of the exercise.
+1. The controller IncorrectAlignment is the endpoint that you need to consume for the GOAL 4 of the exercise.
 2. Take into account that we will probably switch repository type to other technology like MongoDB
 3. As department we strongly believe in Clean Code and SOLID Principles :heart_eyes:, show us that you too.
-4. We want to see your testing capabilities, despite is a CRUD web app, the 5,6 GOAL gives some room for it.
+4. We want to see your testing capabilities, despite is a CRUD web app, the GOAL 4 gives some room for it.
 5. If you feel comfortable you can use some DevOps tool (Azure Devops, jenkins, etc..) to deploy the Web API but is not compulsive.
 6. IMPORTANT :running: In case you didn't have the time to include certain capability/feature/technology comment them on the email and we will discuss it later on the interview.
 
