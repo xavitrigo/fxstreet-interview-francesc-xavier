@@ -28,7 +28,9 @@ The aim of this API is to store information about players, managers, referees, m
 3. The Web API must persist the data in whatever database you feel comfortable.
 4. The code must be available in a Github repository.
 5. In order to complete Goal 4 Go to [this link](http://interview-api.azurewebsites.net/swagger/index.html) and consume /api/IncorrectAlignment
-6. Once you have finished the exercise send an Email (javier@fxstreet.com and alain@fxstreet.com) following the Email Template described bellow.
+6. In the default implementation a local Database is created in C:\Users\[user]\AppData\Local\Microsoft\Microsoft SQL Server Local DB\Instances\MSSQLLocalDB
+7. We have initialized some Entities but Matches are empty, feel free to initialize them.
+8. Once you have finished the exercise send an Email (javier@fxstreet.com and alain@fxstreet.com) following the Email Template described bellow.
 
 ## Rules
 
