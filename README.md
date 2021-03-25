@@ -16,10 +16,10 @@ The aim of this API is to store information about players, managers, referees, m
 ## Goals
 
 1. Fix current errors in the API
-2. Apply good practices in the project following clean code, DDD practices and Restful best practices
 3. Implement Statistics controller following Clean Clode practices
 4. Create a Job that notifies 5 minutes before a game starts incorrect alignments
-5. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
+5. The other controllers (Manager, Match, Player, Referee) are not well implemented, comment in the email you have to send. What are the things you would improve
+6. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
 ## Instructions
 
