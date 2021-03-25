@@ -18,7 +18,7 @@ The aim of this API is to store information about players, managers, referees, m
 1. Fix current errors in the API
 3. Implement Statistics controller following Clean Clode practices
 4. Create a Job that notifies 5 minutes before a game starts incorrect alignments
-5. The other controllers (Manager, Match, Player, Referee) are not well implemented, comment in the email you have to send. What are the things you would improve
+5. The other controllers (Manager, Match, Player, Referee) are not well implemented. What are the things you would improve? Provide that information in comments with //TODO:
 6. Create the frontend with a List of statistics (no Razor allowed, no new endpoints allowed)
 
 ## Instructions
