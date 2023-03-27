@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Football.Services.Services
+namespace Football.Services.Contracts
 {
     public interface IRefereeService
     {

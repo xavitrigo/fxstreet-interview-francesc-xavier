@@ -1,5 +1,5 @@
 ﻿using Football.API.Models;
-using Football.Services.Services;
+using Football.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;

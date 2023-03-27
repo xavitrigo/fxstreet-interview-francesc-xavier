@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Football.API.Services
+namespace Football.Services.Contracts
 {
     public interface IStatisticsService
     {

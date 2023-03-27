@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Football.API.Models;
-using Football.Services.Services;
+using Football.Services.Contracts;
 
 namespace Football.API.Controllers
 {

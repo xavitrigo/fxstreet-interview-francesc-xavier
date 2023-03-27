@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Football.API.Models;
 using Football.Database;
+using Football.Services.Contracts;
 
 namespace Football.Services.Services
 {

@@ -1,6 +1,5 @@
-using Football.API.Services;
 using Football.Database;
-using Football.Services.Services;
+using Football.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,13 +27,9 @@ namespace Football.API
             services.AddDbContext<FootballContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddAutoMapper(typeof(AutoMapperConfiguration));
+            Bootstrapper.ConfigureServices(services);
 
-            services.AddScoped<IManagerService, ManagerService>();
-            services.AddScoped<IRefereeService, RefereeService>();
-            services.AddScoped<IMatchService, MatchService>();
-            services.AddScoped<IPlayerService, PlayerService>();
-            services.AddScoped<IStatisticsService, StatisticsService>();
+            services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
             services.AddControllers().AddNewtonsoftJson(x =>
                 x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
