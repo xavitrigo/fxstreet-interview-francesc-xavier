@@ -1,7 +1,6 @@
 ﻿using Football.API.Services;
-using Football.Services.Contracts;
 using Football.Services.Services;
-using Microsoft.Extensions.Configuration;
+using Football.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Football.Services
