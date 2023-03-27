@@ -1,6 +1,7 @@
 ﻿using Football.API.Models;
 using Football.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,9 +12,14 @@ namespace Football.API.Controllers
     public class MatchController : ControllerBase
     {
         private readonly IMatchService _matchService;
-        public MatchController(IMatchService matchService)
-        {
-            this._matchService = matchService;
+        private readonly ILogger<MatchController> _logger;
+
+        public MatchController(
+            IMatchService matchService,
+            ILogger<MatchController> logger
+        ) {
+            _matchService = matchService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -30,7 +36,11 @@ namespace Football.API.Controllers
         {
             var match = await _matchService.GetMatchById(id);
             if (match == default)
+            {
+                _logger.LogError($"Match to get with ID ${id} not found");
                 this.NotFound();
+            }
+                
             return this.Ok(match);
         }
 
@@ -47,8 +57,11 @@ namespace Football.API.Controllers
         {
             var isMatchInDb = await _matchService.MatchExistsInDb(id);
             if (!isMatchInDb)
+            {
+                _logger.LogError($"Match to update with ID ${id} not found");
                 return this.NotFound();
-
+            }
+            
             await _matchService.UpdateMatch(id, match);
             return this.Ok();
         }

@@ -1,6 +1,7 @@
 ﻿using Football.API.Models;
 using Football.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,10 +12,14 @@ namespace Football.API.Controllers
     public class ManagerController : ControllerBase
     {
         private readonly IManagerService _managerService;
+        private readonly ILogger<ManagerController> _logger;
 
-        public ManagerController(IManagerService managerService) 
-        {
-            this._managerService = managerService;
+        public ManagerController(
+            IManagerService managerService, 
+            ILogger<ManagerController> logger
+        ) {
+            _managerService = managerService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -31,7 +36,11 @@ namespace Football.API.Controllers
         {
             var manager = await _managerService.GetManagerById(id);
             if (manager == default)
+            {
+                _logger.LogError($"Manager to get with ID ${id} not found");
                 this.NotFound();
+            }
+                
             return this.Ok(manager);
         }
 
@@ -48,7 +57,10 @@ namespace Football.API.Controllers
         {
             var isManagerInDb = await _managerService.ManagerExistsInDb(id);
             if (!isManagerInDb)
+            {
+                _logger.LogError($"Manager to update with ID ${id} not found");
                 return this.NotFound();
+            }
 
             await _managerService.UpdateManager(id, manager);
             return this.Ok();

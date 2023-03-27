@@ -3,6 +3,7 @@ using Football.API.Models;
 using Football.Database;
 using Football.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,13 +14,16 @@ namespace Football.Services.Services
     {
         private readonly FootballContext _footballContext;
         private readonly IMapper _mapper;
+        private readonly ILogger<MatchService> _logger;
 
         public MatchService(
             FootballContext footballContext,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<MatchService> logger
         ) {
             _footballContext = footballContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ICollection<MatchDto>> GetAllMatchs()
@@ -45,7 +49,15 @@ namespace Football.Services.Services
 
             var matchInDb = await _footballContext.Matches.AddAsync(parsedMatch);
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<MatchDto>(matchInDb.Entity) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Created Match with ID ${matchInDb.Entity.Id}");
+                return _mapper.Map<MatchDto>(matchInDb.Entity);
+            }
+
+            _logger.LogError($"Couldn't create Match with ID ${matchInDb.Entity.Id}");
+            return null;
         }
 
         public async Task<MatchDto> UpdateMatch(int id, MatchDto newMatch)
@@ -55,7 +67,15 @@ namespace Football.Services.Services
 
             var matchInDb = _footballContext.Matches.Update(parsedMatch).Entity;
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<MatchDto>(matchInDb) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Updated Match with ID ${matchInDb.Id}");
+                return _mapper.Map<MatchDto>(matchInDb);
+            }
+
+            _logger.LogError($"Couldn't update Match with ID ${id}");
+            return null;
         }
 
         public async Task<bool> MatchExistsInDb(int id) =>

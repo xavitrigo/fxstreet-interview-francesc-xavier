@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Football.API.Models;
 using Football.Database;
 using Football.Services.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace Football.Services.Services
 {
@@ -13,13 +14,16 @@ namespace Football.Services.Services
     {
         private readonly FootballContext _footballContext;
         private readonly IMapper _mapper;
+        private readonly ILogger<PlayerService> _logger;
 
         public PlayerService(
             FootballContext footballContext,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<PlayerService> logger
         ) {
             _footballContext = footballContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ICollection<PlayerDto>> GetAllPlayers()
@@ -45,7 +49,15 @@ namespace Football.Services.Services
 
             var playerInDb = await _footballContext.Players.AddAsync(parsedPlayer);
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<PlayerDto>(playerInDb.Entity) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Created Player with ID ${playerInDb.Entity.Id}");
+                return _mapper.Map<PlayerDto>(playerInDb.Entity);
+            }
+
+            _logger.LogError($"Couldn't create Player with ID ${playerInDb.Entity.Id}");
+            return null;
         }
 
         public async Task<PlayerDto> UpdatePlayer(int id, PlayerDto newPlayer)
@@ -55,7 +67,15 @@ namespace Football.Services.Services
 
             var playerInDb = _footballContext.Players.Update(parsedPlayer).Entity;
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<PlayerDto>(playerInDb) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Updated Player with ID ${playerInDb.Id}");
+                return _mapper.Map<PlayerDto>(playerInDb);
+            }
+
+            _logger.LogError($"Couldn't update Player with ID ${id}");
+            return null;
         }
 
         public async Task<bool> PlayerExistsInDb(int id) =>

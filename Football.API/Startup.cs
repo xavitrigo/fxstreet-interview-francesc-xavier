@@ -35,7 +35,6 @@ namespace Football.API
             services.AddControllers().AddNewtonsoftJson(x =>
                 x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-
             var allowedOrigins = Configuration.GetValue<string>("AllowedOrigins");
             services.AddCors(options =>
             {

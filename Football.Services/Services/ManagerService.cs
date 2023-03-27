@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Football.API.Models;
 using Football.Database;
 using Football.Services.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace Football.Services.Services
 {
@@ -13,13 +14,16 @@ namespace Football.Services.Services
     {
         private readonly FootballContext _footballContext;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
         public ManagerService(
             FootballContext footballContext,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<ManagerService> logger
         ) {
             _footballContext = footballContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ICollection<ManagerDto>> GetAllManagers()
@@ -45,7 +49,15 @@ namespace Football.Services.Services
 
             var managerInDb = await _footballContext.Managers.AddAsync(parsedManager);
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<ManagerDto>(managerInDb.Entity) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Created Manager with ID ${managerInDb.Entity.Id}");
+                return _mapper.Map<ManagerDto>(managerInDb.Entity);
+            }
+
+            _logger.LogError($"Couldn't create Manager with ID ${managerInDb.Entity.Id}");
+            return null;
         }
 
         public async Task<ManagerDto> UpdateManager(int id, ManagerDto newManager)
@@ -55,7 +67,15 @@ namespace Football.Services.Services
 
             var managerInDb = _footballContext.Managers.Update(parsedManager).Entity;
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<ManagerDto>(managerInDb) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Updated Manager with ID ${managerInDb.Id}");
+                return _mapper.Map<ManagerDto>(managerInDb);
+            }
+
+            _logger.LogError($"Couldn't update Manager with ID ${id}");
+            return null;
         }
 
         public async Task<bool> ManagerExistsInDb(int id) => 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Football.API.Models;
 using Football.Services.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace Football.API.Controllers
 {
@@ -11,10 +12,14 @@ namespace Football.API.Controllers
     public class RefereeController : ControllerBase
     {
         private readonly IRefereeService _refereeService;
+        private readonly ILogger<PlayerController> _logger;
 
-        public RefereeController(IRefereeService refereeService)
-        {
+        public RefereeController(
+            IRefereeService refereeService,
+            ILogger<PlayerController> logger
+        ) {
             _refereeService = refereeService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -31,7 +36,11 @@ namespace Football.API.Controllers
         {
             var referee = await _refereeService.GetRefereeById(id);
             if (referee == default)
+            {
+                _logger.LogError($"Referee to get with ID ${id} not found");
                 this.NotFound();
+            }
+                
             return this.Ok(referee);
         }
 
@@ -48,7 +57,10 @@ namespace Football.API.Controllers
         {
             var isManagerInDb = await _refereeService.RefereeExistsInDb(id);
             if (!isManagerInDb)
+            {
+                _logger.LogError($"Referee to update with ID ${id} not found");
                 return this.NotFound();
+            }
 
             await _refereeService.UpdateReferee(id, referee);
             return this.Ok();

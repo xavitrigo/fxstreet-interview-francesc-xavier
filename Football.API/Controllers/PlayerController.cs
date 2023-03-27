@@ -1,6 +1,7 @@
 ﻿using Football.API.Models;
 using Football.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,10 +12,14 @@ namespace Football.API.Controllers
     public class PlayerController : ControllerBase
     {
         private readonly IPlayerService _playerService;
+        private readonly ILogger<PlayerController> _logger;
 
-        public PlayerController(IPlayerService playerService)
-        {
+        public PlayerController(
+            IPlayerService playerService,
+            ILogger<PlayerController> logger
+        ) {
             _playerService = playerService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -31,7 +36,11 @@ namespace Football.API.Controllers
         {
             var player = await _playerService.GetPlayerById(id);
             if (player == default)
+            {
+                _logger.LogError($"Player to get with ID ${id} not found");
                 this.NotFound();
+            }
+                
             return this.Ok(player);
         }
 
@@ -48,7 +57,11 @@ namespace Football.API.Controllers
         {
             var isPlayerInDb = await _playerService.PlayerExistsInDb(id);
             if (!isPlayerInDb)
+            {
+                _logger.LogError($"Player to update with ID ${id} not found");
                 return this.NotFound();
+            }
+                
 
             await _playerService.UpdatePlayer(id, player);
             return this.Ok();

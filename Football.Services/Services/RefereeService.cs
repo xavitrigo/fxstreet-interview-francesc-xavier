@@ -3,6 +3,7 @@ using Football.API.Models;
 using Football.Database;
 using Football.Services.Contracts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,14 +14,17 @@ namespace Football.Services.Services
     {
         private readonly FootballContext _footballContext;
         private readonly IMapper _mapper;
+        private readonly ILogger<RefereeService> _logger;
 
         public RefereeService(
             FootballContext footballContext,
-            IMapper mapper
+            IMapper mapper,
+            ILogger<RefereeService> logger
         )
         {
             _footballContext = footballContext;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<ICollection<RefereeDto>> GetAllReferees()
@@ -46,7 +50,15 @@ namespace Football.Services.Services
 
             var refereeInDb = await _footballContext.Referees.AddAsync(parsedReferee);
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<RefereeDto>(refereeInDb.Entity) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Created Referee with ID ${refereeInDb.Entity.Id}");
+                return _mapper.Map<RefereeDto>(refereeInDb.Entity);
+            }
+
+            _logger.LogError($"Couldn't create Referee with ID ${refereeInDb.Entity.Id}");
+            return null;
         }
 
         public async Task<RefereeDto> UpdateReferee(int id, RefereeDto newReferee)
@@ -56,7 +68,15 @@ namespace Football.Services.Services
 
             var refereeInDb = _footballContext.Referees.Update(parsedReferee).Entity;
             var entitiesSaved = await _footballContext.SaveChangesAsync();
-            return entitiesSaved == 1 ? _mapper.Map<RefereeDto>(refereeInDb) : null;
+
+            if (entitiesSaved == 1)
+            {
+                _logger.LogInformation($"Updated Referee with ID ${refereeInDb.Id}");
+                return _mapper.Map<RefereeDto>(refereeInDb);
+            }
+
+            _logger.LogError($"Couldn't update Referee with ID ${id}");
+            return null;
         }
 
         public async Task<bool> RefereeExistsInDb(int id) =>
