@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  football.api:
+    image: ${DOCKER_REGISTRY-}footballapi
+    build:
+      context: .
+      dockerfile: Football.API/Dockerfile

@@ -1,6 +1,8 @@
 ﻿using Football.API.Models;
+using Football.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Football.API.Controllers
 {
@@ -8,44 +10,47 @@ namespace Football.API.Controllers
     [ApiController]
     public class ManagerController : ControllerBase
     {
-        readonly FootballContext footballContext;
-        public ManagerController(FootballContext footballContext)
+        private readonly IManagerService _managerService;
+
+        public ManagerController(IManagerService managerService) 
         {
-            this.footballContext = footballContext;
+            this._managerService = managerService;
         }
 
         [HttpGet]
         [Route("")]
-        public ActionResult<IEnumerable<Manager>> Get()
+        public async Task<ActionResult<IEnumerable<Manager>>> Get()
         {
-            return this.Ok(footballContext.Managers);
+            var managers = await _managerService.GetAllManagers();
+            return this.Ok(managers);
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetById")]
-        public ActionResult GetById(int id)
+        [Route("{id}", Name = "GetManagerById")]
+        public async Task<ActionResult> GetManagerById(int id)
         {
-            var response = footballContext.Managers.Find(id);
-            if (response == default)
+            var manager = await _managerService.GetManagerById(id);
+            if (manager == default)
                 this.NotFound();
-            return this.Ok();
+            return this.Ok(manager);
         }
 
         [HttpPost]
-        public ActionResult Post(Manager manager)
+        public async Task<ActionResult> Post(ManagerDto manager)
         {
-            var response = footballContext.Managers.Add(manager).Entity;
-            return this.CreatedAtAction("GetById", response.Id, response);
+            var managerInDb = await _managerService.AddManager(manager);
+            return this.CreatedAtAction(nameof(GetManagerById), new { managerInDb.Id }, managerInDb);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult Update(int id, Manager manager)
+        public async Task<ActionResult> Update(int id, ManagerDto manager)
         {
-            if (footballContext.Managers.Find(id) == default)
+            var isManagerInDb = await _managerService.ManagerExistsInDb(id);
+            if (!isManagerInDb)
                 return this.NotFound();
 
-            footballContext.Managers.Update(manager);           
+            await _managerService.UpdateManager(id, manager);
             return this.Ok();
         }
     }

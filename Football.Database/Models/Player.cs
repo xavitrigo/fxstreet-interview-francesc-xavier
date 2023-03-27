@@ -1,8 +1,9 @@
-﻿namespace Football.API.Models
+﻿using Football.Database.Models;
+
+namespace Football.API.Models
 {
-    public class Player
+    public class Player : FootballModel
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int YellowCard { get; set; }
         public int RedCard { get; set; }

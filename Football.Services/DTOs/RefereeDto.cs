@@ -1,8 +1,8 @@
 ﻿namespace Football.API.Models
 {
-    public class Referee
+    public class RefereeDto
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
         public int MinutesPlayed { get; set; }
     }

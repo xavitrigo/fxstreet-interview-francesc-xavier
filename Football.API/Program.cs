@@ -1,12 +1,11 @@
+using Football.Database;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Football.API
 {
@@ -29,7 +28,8 @@ namespace Football.API
                 try
                 {
                     var context = services.GetRequiredService<FootballContext>();
-                    DbInitializer.Initialize(context);
+
+                    context.Database.Migrate();
                 }
                 catch (Exception ex)
                 {
@@ -41,6 +41,14 @@ namespace Football.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var enviroment = hostingContext.HostingEnvironment.EnvironmentName;
+                    config.SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                          .AddJsonFile("appsettings." + enviroment + ".json",
+                            optional: false,
+                            reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

@@ -1,6 +1,8 @@
 ﻿using Football.API.Models;
+using Football.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Football.API.Controllers
 {
@@ -8,44 +10,47 @@ namespace Football.API.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        readonly FootballContext footballContext;
-        public PlayerController(FootballContext footballContext)
+        private readonly IPlayerService _playerService;
+
+        public PlayerController(IPlayerService playerService)
         {
-            this.footballContext = footballContext;
+            _playerService = playerService;
         }
 
         [HttpGet]
         [Route("")]
-        public ActionResult<IEnumerable<Player>> Get()
+        public async Task<ActionResult<IEnumerable<Player>>> Get()
         {
-            return this.Ok(footballContext.Players);
+            var players = await _playerService.GetAllPlayers();
+            return this.Ok(players);
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetById")]
-        public ActionResult GetById(int id)
+        [Route("{id}", Name = "GetPlayerById")]
+        public async Task<ActionResult> GetPlayerById(int id)
         {
-            var response = footballContext.Players.Find(id);
-            if (response == default)
+            var player = await _playerService.GetPlayerById(id);
+            if (player == default)
                 this.NotFound();
-            return this.Ok();
+            return this.Ok(player);
         }
 
         [HttpPost]
-        public ActionResult Post(Player player)
+        public async Task<ActionResult> Post(PlayerDto player)
         {
-            var response = footballContext.Players.Add(player).Entity;
-            return this.CreatedAtAction("GetById", response.Id, response);
+            var playerInDb = await _playerService.AddPlayer(player);
+            return this.CreatedAtAction(nameof(GetPlayerById), new { playerInDb.Id }, playerInDb);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult Update(int id, Player player)
+        public async Task<ActionResult> Update(int id, PlayerDto player)
         {
-            if (footballContext.Players.Find(id) == default)
+            var isPlayerInDb = await _playerService.PlayerExistsInDb(id);
+            if (!isPlayerInDb)
                 return this.NotFound();
 
-            footballContext.Players.Update(player);        
+            await _playerService.UpdatePlayer(id, player);
             return this.Ok();
         }
     }

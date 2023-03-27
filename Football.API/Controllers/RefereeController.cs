@@ -1,6 +1,8 @@
-﻿using Football.API.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Football.API.Models;
+using Football.Services.Services;
 
 namespace Football.API.Controllers
 {
@@ -8,44 +10,47 @@ namespace Football.API.Controllers
     [ApiController]
     public class RefereeController : ControllerBase
     {
-        readonly FootballContext footballContext;
-        public RefereeController(FootballContext footballContext)
+        private readonly IRefereeService _refereeService;
+
+        public RefereeController(IRefereeService refereeService)
         {
-            this.footballContext = footballContext;
+            _refereeService = refereeService;
         }
 
         [HttpGet]
         [Route("")]
-        public ActionResult<IEnumerable<Referee>> Get()
+        public async Task<ActionResult<IEnumerable<Referee>>> Get()
         {
-            return this.Ok(footballContext.Referees);
+            var referees = await _refereeService.GetAllReferees();
+            return this.Ok(referees);
         }
 
         [HttpGet]
-        [Route("{id}", Name = "GetById")]
-        public ActionResult GetById(int id)
+        [Route("{id}", Name = "GetRefereeById")]
+        public async Task<ActionResult> GetRefereeById(int id)
         {
-            var response = footballContext.Referees.Find(id);
-            if (response == default)
+            var referee = await _refereeService.GetRefereeById(id);
+            if (referee == default)
                 this.NotFound();
-            return this.Ok();
+            return this.Ok(referee);
         }
 
         [HttpPost]
-        public ActionResult Post(Referee referee)
+        public async Task<ActionResult> Post(RefereeDto referee)
         {
-            var response = footballContext.Referees.Add(referee).Entity;
-            return this.CreatedAtAction("GetById", response.Id, response);
+            var refereeInDb = await _refereeService.AddReferee(referee);
+            return this.CreatedAtAction(nameof(GetRefereeById), new { refereeInDb.Id }, refereeInDb);
         }
 
         [HttpPut]
         [Route("{id}")]
-        public ActionResult Update(int id, Referee referee)
+        public async Task<ActionResult> Update(int id, RefereeDto referee)
         {
-            if (footballContext.Referees.Find(id) == default)
+            var isManagerInDb = await _refereeService.RefereeExistsInDb(id);
+            if (!isManagerInDb)
                 return this.NotFound();
 
-            footballContext.Referees.Update(referee);        
+            await _refereeService.UpdateReferee(id, referee);
             return this.Ok();
         }
     }

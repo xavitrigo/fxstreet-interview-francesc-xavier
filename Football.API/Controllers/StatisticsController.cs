@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Football.API.Services;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Football.API.Controllers
 {
@@ -7,31 +8,34 @@ namespace Football.API.Controllers
     [ApiController]
     public class StatisticsController : ControllerBase
     {
-        readonly FootballContext footballContext;
-        public StatisticsController(FootballContext footballContext)
+        readonly IStatisticsService _statisticsService;
+        public StatisticsController(IStatisticsService statisticsService)
         {
-            this.footballContext = footballContext;
+            _statisticsService = statisticsService;
         }
 
         [HttpGet]
         [Route("yellowcards")]
-        public ActionResult GetYellowCards()
+        public async Task<ActionResult> GetYellowCards()
         {
-            throw new NotImplementedException();
+            var yellowCardsPerMatch = await _statisticsService.GetYellowCards();
+            return this.Ok(yellowCardsPerMatch);
         }
 
         [HttpGet]
         [Route("redcards")]
-        public ActionResult GetRedCards()
+        public async Task<ActionResult> GetRedCards()
         {
-            throw new NotImplementedException();
+            var redCardsPerMatch = await _statisticsService.GetRedCards();
+            return this.Ok(redCardsPerMatch);
         }
 
         [HttpGet]
         [Route("minutesplayed")]
-        public ActionResult GetMinutesPlayed()
+        public async Task<ActionResult> GetMinutesPlayed()
         {
-            throw new NotImplementedException();
+            var minutesPlayedPerMatch = await _statisticsService.GetMinutesPlayed();
+            return this.Ok(minutesPlayedPerMatch);
         }
     }
 }
