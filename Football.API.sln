@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Football.API.UnitTests", "F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Football.Database", "Football.Database\Football.Database.csproj", "{16E1F472-3657-454F-B3A4-8E11CC17E7BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Football.Services", "Football.Services\Football.Services.csproj", "{9881ECD0-FCDB-49B7-B2F7-4D5C734F02A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Football.Services", "Football.Services\Football.Services.csproj", "{9881ECD0-FCDB-49B7-B2F7-4D5C734F02A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

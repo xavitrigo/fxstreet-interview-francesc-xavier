@@ -25,8 +25,6 @@ namespace Football.API
         {
             services.AddSwaggerGen();
 
-            string repositoryUrls = Configuration.GetSection("ConnectionStrings").Value;
-
             services.AddDbContext<FootballContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
