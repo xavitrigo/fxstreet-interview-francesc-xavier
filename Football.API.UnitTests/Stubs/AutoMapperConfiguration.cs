@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System;
 
-namespace Football.API.UnitTests.Mocks
+namespace Football.API.UnitTests.Stubs
 {
     public static class AutoMapper
     {
