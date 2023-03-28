@@ -1,0 +1,12 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 3em;
+}
+
+.button {
+  align-self: center;
+  justify-self: center;
+  height: 2.5em;
+}

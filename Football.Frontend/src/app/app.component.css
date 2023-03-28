@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  width: 90%;
+  margin-top: 5em;
+  row-gap: 5em;
+  flex-direction: column;
+}

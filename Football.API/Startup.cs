@@ -12,7 +12,6 @@ namespace Football.API
     public class Startup
     {
         readonly IConfiguration Configuration;
-        readonly string allowSpecificOrigins = "_AllowSpecificOrigins";
 
         public Startup(IConfiguration configuration)
         {
@@ -35,18 +34,17 @@ namespace Football.API
             services.AddControllers().AddNewtonsoftJson(x =>
                 x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            var allowedOrigins = Configuration.GetValue<string>("AllowedOrigins");
+            var allowedOrigins = "http://localhost:4200;http://localhost:53204;https://localhost:53203";
             services.AddCors(options =>
             {
-                options.AddPolicy(name: allowSpecificOrigins,
-                                  builder =>
-                                  {
-                                      builder
-                                        .WithOrigins(allowedOrigins.Split(";"))
-                                        .AllowAnyMethod()
-                                        .AllowCredentials()
-                                        .AllowAnyHeader();
-                                  });
+                options.AddDefaultPolicy(
+                        policy =>
+                        {
+                            policy
+                            .WithOrigins(allowedOrigins.Split(";"))
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                        });
             });
 
             services.AddMvc();
@@ -64,7 +62,7 @@ namespace Football.API
 
             app.UseRouting();
 
-            app.UseCors(allowSpecificOrigins);
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

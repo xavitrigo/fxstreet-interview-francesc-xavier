@@ -1,0 +1,29 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName="name">
+    <mat-error *ngIf="!formGroup.controls['name'].valid && formGroup.controls['name'].touched">
+      Name is required.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Yellow Cards" type="number" formControlName="yellowCard">
+    <mat-error *ngIf="!formGroup.controls['yellowCard'].valid && formGroup.controls['yellowCard'].touched">
+      Required field, must be a number.
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Red Cards" type="number" formControlName="redCard">
+    <mat-error *ngIf="!formGroup.controls['redCard'].valid && formGroup.controls['redCard'].touched">
+      Required field, must be a number.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="button">
+    <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Add Manager</button>
+  </div>
+</form>
+
+
+
