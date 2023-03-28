@@ -2,6 +2,7 @@
 using Football.Services.Services;
 using Football.Services.Contracts;
 using Microsoft.Extensions.DependencyInjection;
+using Football.Services.Jobs;
 
 namespace Football.Services
 {
@@ -14,6 +15,8 @@ namespace Football.Services
             services.AddScoped<IMatchService, MatchService>();
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IStatisticsService, StatisticsService>();
+
+            services.AddHostedService<ReportIncorrectAlignmentsJob>();
         }
     }
 }
